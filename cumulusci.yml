@@ -37,10 +37,6 @@ flows:
         ui_options:
           name: Deploy metadata for Distinct Location & Market Based EEFs Module
 
-  dev_org:
-    steps:
-      1:
-        flow: nzc_metadata_setup
 plans:
   install:
     slug: install
