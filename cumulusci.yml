@@ -28,7 +28,7 @@ tasks:
             required_org_code_coverage_percent: 75
 
 flows:
-  edu_metadata_setup:
+  nzc_metadata_setup:
     steps:
       1:
         task: deploy
@@ -58,7 +58,7 @@ flows:
   dev_org:
     steps:
       1:
-        flow: edu_metadata_setup
+        flow: nzc_metadata_setup
 plans:
   install:
     slug: install
@@ -77,5 +77,5 @@ plans:
         message: "You need to set enableSustainabilityCloud setting under IndustriesSettings in your Org to use this feature. Contact your Administrator."
     steps:
       1:
-        flow: edu_metadata_setup
+        flow: nzc_metadata_setup
 
