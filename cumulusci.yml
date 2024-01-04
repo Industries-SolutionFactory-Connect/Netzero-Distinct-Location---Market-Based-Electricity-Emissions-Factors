@@ -26,3 +26,56 @@ tasks:
     run_tests:
         options:
             required_org_code_coverage_percent: 75
+
+flows:
+  edu_metadata_setup:
+    steps:
+      1:
+        task: deploy
+        options:
+          path: force-app/main/default/applications
+        ui_options:
+          name: Deploy applications
+      2:
+        task: deploy
+        options:
+          path: force-app/main/default/flexipages
+        ui_options:
+          name: Deploy flexipages
+      3:
+        task: deploy
+        options:
+          path: force-app/main/default/layouts
+        ui_options:
+          name: Deploy layouts
+      4:
+        task: deploy
+        options:
+          path: force-app/main/default/stationaryAssetEnvSourceConfigs
+        ui_options:
+          name: Deploy stationary assets
+
+  dev_org:
+    steps:
+      1:
+        flow: edu_metadata_setup
+plans:
+  install:
+    slug: install
+    tier: primary
+    title: Install Solution
+    is_listed: True
+    preflight_message: "This will install data for Distinct Location & Market Based EEFs Module in your Org"
+    post_install_message: "Thanks for installing data for Distinct Location & Market Based EEFs Module. "
+    error_message: "To get help with this error, go to [help.salesforce.com](https://help.salesforce.com/), find the Support & Services area and log a technical support ticket with Salesforce. Include “PMM” in the subject line and include in your comment the installation link shown here."
+    checks:
+      - when: "'NetZeroCloudUserPsl' not in tasks.get_available_permission_set_licenses()"
+        action: error
+        message: "You need NetZeroCloudUserPsl licence in your Org to use this feature. Contact your Administrator."
+      - when: "'enableSustainabilityCloud' not in tasks.check_org_settings_value()"
+        action: error
+        message: "You need to set enableSustainabilityCloud setting under IndustriesSettings in your Org to use this feature. Contact your Administrator."
+    steps:
+      1:
+        flow: edu_metadata_setup
+
