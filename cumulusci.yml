@@ -33,27 +33,9 @@ flows:
       1:
         task: deploy
         options:
-          path: force-app/main/default/applications
+          path: force-app/main/default
         ui_options:
-          name: Deploy applications
-      2:
-        task: deploy
-        options:
-          path: force-app/main/default/flexipages
-        ui_options:
-          name: Deploy flexipages
-      3:
-        task: deploy
-        options:
-          path: force-app/main/default/layouts
-        ui_options:
-          name: Deploy layouts
-      4:
-        task: deploy
-        options:
-          path: force-app/main/default/stationaryAssetEnvSourceConfigs
-        ui_options:
-          name: Deploy stationary assets
+          name: Deploy metadata for Distinct Location & Market Based EEFs Module
 
   dev_org:
     steps:
