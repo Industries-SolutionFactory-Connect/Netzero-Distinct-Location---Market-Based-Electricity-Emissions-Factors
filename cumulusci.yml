@@ -56,7 +56,7 @@ plans:
       - when: "'NetZeroCloudUserPsl' not in tasks.get_available_permission_set_licenses()"
         action: error
         message: "You need NetZeroCloudUserPsl licence in your Org to use this feature. Contact your Administrator."
-      - when: "'enableSustainabilityCloud' not in tasks.check_org_settings_value()"
+      - when: "not tasks.check_org_settings_value()"
         action: error
         message: "You need to set enableSustainabilityCloud setting under IndustriesSettings in your Org to use this feature. Contact your Administrator."
     steps:
