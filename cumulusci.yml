@@ -27,11 +27,12 @@ tasks:
         options:
             required_org_code_coverage_percent: 75
 
-check_org_settings_value:
-   options:
-      settings_type: IndustriesSettings
-      settings_field: IsSustainabilityCloudEnabled
-      value: true
+    check_org_settings_value:
+        options:
+            settings_type: IndustriesSettings
+            settings_field: IsSustainabilityCloudEnabled
+            treat_missing_as_failure: true      
+            value: true
 
 flows:
   nzc_metadata_setup:
